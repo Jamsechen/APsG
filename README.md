@@ -1,2 +1,1 @@
-# APsG_Huber_New
-# APsG_Huber
+# This is a matlab code for solving multivariate Huber regression model. # APsG
