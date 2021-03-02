@@ -24,13 +24,13 @@ Input:
       
       para--other parameters 
           
-          para.maxiter--the maximum number of iterations;
+            para.maxiter--the maximum number of iterations;
           
-          para.eta--linesearch parameter
+            para.eta--linesearch parameter
           
-          para.tol--tolerance
+            para.tol--tolerance
           
-          para.linesearch--control linesearch (1--linesearch; 0--no linesearch)
+            para.linesearch--control linesearch (1--linesearch; 0--no linesearch)
 
 Output:
       
