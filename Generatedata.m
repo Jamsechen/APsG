@@ -56,7 +56,7 @@ function [X,SIGMA_X,Y_E,B_true]  = Generatedata(n,m,m0,q,rho_X,rho_E,df,et,cor)
             % multivariate Normal distribution
    end
    if et==2
-      ERROR = 10*mvtrnd(SIGMA_E,df,n);
+      ERROR = mvtrnd(SIGMA_E,df,n);
            % multivariate t-distribution
    end
    if et==3
