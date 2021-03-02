@@ -16,7 +16,7 @@
   huberC = 10:-1:1;
   lhuber = length(huberC);
   
-  mu_max = 1000;   delta = 6.5*10^(-3);   mu_N = 100; 
+  mu_max = 200;   delta = 5*10^(-3);   mu_N = 100; 
   mu     = mu_max*delta.^([0:1:(mu_N-1)]/(mu_N-1));
   lmu    = length(mu);
   alpha  = 0.001;
