@@ -5,8 +5,8 @@
   rho_E = 0.5;   cor = 1;     
   df    = 2; %the degree freedom of t-distribution error               
         
-  et    = 2; % 1--normal error; 2--t-distribution error;           
-  rho_X = 0.2; 
+  et    = 1; % 1--normal error; 2--t-distribution error;           
+  rho_X = 0.9; 
   
   para.linesearch = 1;    % 1--linesearch; 0--no linesearch;
   para.maxiter    = 100;  %maximum number of iterations 
@@ -16,14 +16,14 @@
   huberC = 10:-1:1;
   lhuber = length(huberC);
   
-  mu_max = 200;   delta = 6.5*10^(-3);   mu_N = 100; 
+  mu_max = 1000;   delta = 6.5*10^(-3);   mu_N = 100; 
   mu     = mu_max*delta.^([0:1:(mu_N-1)]/(mu_N-1));
   lmu    = length(mu);
   alpha  = 0.001;
   mu1    = (1-alpha)*mu;  
   mu2    = alpha*mu;
   
-    N = 2;
+    N = 100;
 for l=1:N
     [X,Sigma_X,Y_E,B_true] = Generatedata(n,m,m0,q,rho_X,rho_E,df,et,cor);
     B0           = zeros(size(B_true)); 
@@ -39,7 +39,7 @@ end
     B_old = B0;
 for k=1:lmu
     for i=1:lhuber
-        [B,Supp_B,Cpu] = APsG_Huber_New(X,Y_E,B_old,mu1(k),mu2(k),huberC(i),para);
+        [B,Supp_B,Cpu] = APsG_Huber(X,Y_E,B_old,mu1(k),mu2(k),huberC(i),para);
         Supp(k,i)      = length(Supp_B);
         Time(k,i)      = Cpu;
         [C_temp(k,i),IC_temp(k,i)] = finderror(B,B_true);
@@ -68,6 +68,6 @@ end
    APSG_IC  = mean(IC_APSG);       APSG_IC_std  = std(IC_APSG);
    APSG_CPU = mean(CPU_APSG);      APSG_CPU_std = std(CPU_APSG);
 %% Display the final result
- Result = ['Measurement', 'Estimation MSE', 'std(Estimation MSE)',      'C',    'std(C)',      'IC',    'std(IC)',     'CPU',    'std(CPU)';...
-                'Result',         APSG_MSE,          APSG_MSE_std,   APSG_C,  APSG_C_std,   APSG_IC,  APSG_IC_std,  APSG_CPU,  APSG_CPU_std;];
+ Result = {'Measurement', 'Estimation MSE', 'std(Estimation MSE)',      'C',    'std(C)',      'IC',    'std(IC)',     'CPU',    'std(CPU)';...
+                    '--',         APSG_MSE,          APSG_MSE_std,   APSG_C,  APSG_C_std,   APSG_IC,  APSG_IC_std,  APSG_CPU,  APSG_CPU_std;};
  Result
