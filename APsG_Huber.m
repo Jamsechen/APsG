@@ -12,7 +12,7 @@ function [B_new,Supp_B_new,Time] = APsG_Huber(X,Y,B0,mu1,mu2,huberC,para)
   L_f        = eigs(X'*X,1,'LM');
   L_min      = 1e-2*L_f;
 
-  Z_old = inv(mu2/n*eye(m)+X'*X)*X'*Y;%pinv(X'*X)*X'*Y;% 
+  Z_old = inv(mu2/n*eye(m)+X'*X)*X'*Y;
   t_old = 1;
   L_old = L_f;
   B_old = B0;
