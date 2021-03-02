@@ -2,7 +2,7 @@
 %%      where h() is the vector form Huber function and B_{i.} is the ith row of B.
 %% h_t(x)=||x||^2/2, when ||x||<=t; h_t(x)=t(||x||-t/2), when ||x||>=t.
 
-function [B_new,Supp_B_new,Time] = APsG_Huber_New(X,Y,B0,mu1,mu2,huberC,para)
+function [B_new,Supp_B_new,Time] = APsG_Huber(X,Y,B0,mu1,mu2,huberC,para)
   n          = size(Y,1);
   m          = size(B0,1);
   Maxiter    = para.maxiter;
