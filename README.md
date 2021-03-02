@@ -1,4 +1,4 @@
-# This is a matlab code for solving multivariate Huber regression model 
+# This is a matlab code for solving row Elastic-Net regularized multivariate Huber regression model 
  
  Model: 
          min_B {sum(h_t(Y_{i.}-X_{i.}B) + mu1* sum(||B_{i.}||) +(mu2/2)* ||B||_F^2}
